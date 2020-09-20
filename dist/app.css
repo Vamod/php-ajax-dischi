@@ -6,12 +6,12 @@
 }
 
 body {
-  background: #1E2D3B;
+  background-color: #1E2D3B;
   min-height: 100vh;
 }
 
-.container {
-  width: 1070px;
+body .container {
+  width: 70%;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -26,47 +26,52 @@ header {
 
 header img {
   height: 50px;
-  /* margin-top: 10px; */
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .cds-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  flex-basis: unset;
   padding: 100px 0;
 }
 
-.cd {
+.cds-container .cd {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
-  flex-basis: 200px;
+  flex-wrap: nowrap;
+  flex-basis: calc((944.3px - 120px) / 3);
   padding: 20px;
-  margin: 10px 20px;
+  margin: 0 20px 40px 20px;
   height: 360px;
   background: #2e3a46;
   text-align: center;
 }
 
-.cd img {
+.cds-container .cd img {
   max-width: 100%;
+  color: #5ed2b3;
 }
 
-.cd h3 {
+.cds-container .cd h3 {
   margin: 20px 0;
   color: white;
   font-size: 22px;
   text-transform: uppercase;
 }
 
-.cd span.author {
+.cds-container .cd span.author {
   color: grey;
   font-size: 20px;
 }
 
-.cd span.year {
+.cds-container .cd span.year {
   color: grey;
 }
 

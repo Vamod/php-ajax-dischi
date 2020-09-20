@@ -21,7 +21,7 @@
          <div class="cds-container container">
              <?php foreach ($database as $cd) { ?>
                  <div class="cd">
-                     <img src="<?php echo $cd['poster']; ?>" alt="">
+                     <img src="<?php echo $cd['poster']; ?>" alt="<?php echo $cd['title'].' '.$cd['author']; ?>">
                  </div>
              <?php } ?>
          </div>
