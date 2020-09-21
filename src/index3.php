@@ -1,6 +1,4 @@
-<?php
-    include 'dischi-db.php';
- ?>
+<?php include 'dischi-db.php' ?>
 
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -8,12 +6,11 @@
          <meta charset="utf-8">
          <title>php-ajax-dischi</title>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-         <link rel="stylesheet" href="app.css">
+         <link rel="stylesheet" href="../dist/app.css">
      </head>
      <body>
          <header>
-             <div class="container ">
+             <div class="container">
                  <img src="logo.png" alt="logo" />
              </div>
          </header>
@@ -24,6 +21,7 @@
                      <img src="<?php echo $cd['poster']; ?>" alt="<?php echo $cd['title'].' '.$cd['author']; ?>">
                  </div>
              <?php } ?>
+
          </div>
 
      </body>

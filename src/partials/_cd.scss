@@ -2,12 +2,17 @@
     @include flex(row, center, center, wrap, unset);
     padding: 100px 0;
     .cd {
-        @include flex(column, flex-start, center, nowrap, calc((944.3px - 120px) / 3));
+        @include flex(column, flex-start, center, nowrap, calc((100% - 120px) / 3));
         padding: 20px;
         margin: 0 20px 40px 20px;
         height: 360px;
         background: $navbarCardColor;
         text-align: center;
+        &:hover{
+            transform: scale(1.10);
+            transition: 0.2s;
+
+        }
         img {
             max-width: 100%;
             color: #5ed2b3;

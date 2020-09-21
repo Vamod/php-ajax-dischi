@@ -46,12 +46,17 @@ header img {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
-  flex-basis: calc((944.3px - 120px) / 3);
+  flex-basis: calc((100% - 120px) / 3);
   padding: 20px;
   margin: 0 20px 40px 20px;
   height: 360px;
   background: #2e3a46;
   text-align: center;
+}
+
+.cds-container .cd:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
 }
 
 .cds-container .cd img {
