@@ -10980,14 +10980,46 @@ return jQuery;
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  $.ajax({
-    'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
-    'method': 'GET',
-    'success': function success(risposta) {
-      printData(risposta); // console.log(risposta);
-    },
-    'error': function error() {
-      alert('Errore');
+  $('#choose').click(function () {
+    $('.cds-container').empty();
+    var option = $(this).val();
+
+    if (option == 'All') {
+      $.ajax({
+        'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
+        'method': 'GET',
+        'success': function success(risposta) {
+          printData(risposta); // console.log(risposta);
+        },
+        'error': function error() {
+          alert('Errore');
+        }
+      });
+    } else {
+      $.ajax({
+        'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
+        'method': 'GET',
+        'success': function success(risposta) {
+          var source = $("#entry-template").html();
+          var template = Handlebars.compile(source);
+
+          for (var i = 0; i < risposta.length; i++) {
+            if (option == risposta[i].author) {
+              var context = {
+                'title': risposta[i].title,
+                'author': risposta[i].author,
+                'year': risposta[i].year,
+                'poster': risposta[i].poster
+              };
+              var html = template(context);
+              $('.cds-container').append(html);
+            }
+          }
+        },
+        'error': function error() {
+          alert('Errore');
+        }
+      });
     }
   });
 });

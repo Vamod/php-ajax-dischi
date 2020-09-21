@@ -1,4 +1,4 @@
-
+<?php include 'dischi-db.php'; ?>
 
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -12,6 +12,13 @@
          <header>
              <div class="container">
                  <img src="logo.png" alt="logo" />
+                 <select name="author" id="choose">
+                     <option value="All">All</option>
+                     <?php foreach ($database as $cd) { ?>
+                         <option value="<?php echo $cd['author']; ?>"><?php echo $cd['author']; ?></option>
+
+                     <?php } ?>
+                 </select>
              </div>
          </header>
 
