@@ -10980,41 +10980,19 @@ return jQuery;
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  $('#choose').click(function () {
+  getData();
+  $('#choose').change(function () {
     $('.cds-container').empty();
     var option = $(this).val();
 
     if (option == 'All') {
-      $.ajax({
-        'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
-        'method': 'GET',
-        'success': function success(risposta) {
-          printData(risposta); // console.log(risposta);
-        },
-        'error': function error() {
-          alert('Errore');
-        }
-      });
+      getData();
     } else {
       $.ajax({
         'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
         'method': 'GET',
         'success': function success(risposta) {
-          var source = $("#entry-template").html();
-          var template = Handlebars.compile(source);
-
-          for (var i = 0; i < risposta.length; i++) {
-            if (option == risposta[i].author) {
-              var context = {
-                'title': risposta[i].title,
-                'author': risposta[i].author,
-                'year': risposta[i].year,
-                'poster': risposta[i].poster
-              };
-              var html = template(context);
-              $('.cds-container').append(html);
-            }
-          }
+          printSelect(risposta, option);
         },
         'error': function error() {
           alert('Errore');
@@ -11022,7 +11000,20 @@ $(document).ready(function () {
       });
     }
   });
-});
+}); // funzioni
+
+function getData() {
+  $.ajax({
+    'url': 'http://localhost:81/11-php-dischi/php-ajax-dischi/src/server.php',
+    'method': 'GET',
+    'success': function success(risposta) {
+      printData(risposta);
+    },
+    'error': function error() {
+      alert('Errore');
+    }
+  });
+}
 
 function printData(data) {
   var source = $("#entry-template").html();
@@ -11037,6 +11028,24 @@ function printData(data) {
     };
     var html = template(context);
     $('.cds-container').append(html);
+  }
+}
+
+function printSelect(data, option) {
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < data.length; i++) {
+    if (option == data[i].author) {
+      var context = {
+        'title': data[i].title,
+        'author': data[i].author,
+        'year': data[i].year,
+        'poster': data[i].poster
+      };
+      var html = template(context);
+      $('.cds-container').append(html);
+    }
   }
 }
 

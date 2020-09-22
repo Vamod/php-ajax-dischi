@@ -12,11 +12,11 @@
          <header>
              <div class="container">
                  <img src="logo.png" alt="logo" />
+                 <!-- soluzione Cristina il GET prende il valore di name -->
                  <select name="author" id="choose">
                      <option value="All">All</option>
                      <?php foreach ($database as $cd) { ?>
                          <option value="<?php echo $cd['author']; ?>"><?php echo $cd['author']; ?></option>
-
                      <?php } ?>
                  </select>
              </div>
